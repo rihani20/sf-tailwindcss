@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="flex justify-center">
+
+<h1>Premiere approche</h1>
+    {% include 'home/_simple_card.html.twig' with {
+        title: 'Titre de la carte',
+        content: 'Contenu de la carte',
+        buttonUrl: '#',
+        buttonText: 'Cliquez ici'
+    } %}
+    </div>
+    <div class="flex justify-center">
+
+<h1>Deuxiéme approche</h1>
+
+      {{ render(controller('App\\Controller\\HomeController::simpleCard', {
+            'title': 'Titre de la carte',
+            'content': 'Contenu de la carte',
+            'buttonUrl': '#',
+            'buttonText': 'Cliquez ici'
+        })) }}
+</div>
+<div class="flex justify-center">
+
+<h1>Troisiéme approche</h1>
+
+    {{ component('simple_card',{
+            title: 'Ceci est le titre de ma carte',
+            content: 'Ceci est le contenu de ma carte',
+            buttonUrl: 'https://www.google.fr',
+            buttonText: 'Google'
+        })
+    }}
+</div>
+
+{% endblock %}
